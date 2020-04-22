@@ -118,5 +118,6 @@ public class AnimationController implements IController {
   public void restart() {
     this.currentTick = 0;
     this.maxTick = a.getMaxTick();
+    a.resetAnimation();
   }
 }
