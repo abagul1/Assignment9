@@ -94,7 +94,7 @@ public class AnimatorTest {
             5, 60, 30, 5 ,10, 0, 255, 0, 0);
     String str = am.getVerboseAnimation();
     assertEquals("shape R rectangle\n"
-            + "motion R 1 50 50 5 10 0 255 0 5 60 30 5 10 0 255 0\n\n", str);
+            + "motion R 1 50 50 5 10 0 255 0 0 5 60 30 5 10 0 255 0 0\n\n", str);
   }
 
 
@@ -106,7 +106,7 @@ public class AnimatorTest {
             5, 60, 30, 10 ,20, 0, 255, 0, 0);
     String str = am.getVerboseAnimation();
     assertEquals("shape R rectangle\n"
-            + "motion R 1 50 50 5 10 0 255 0 5 60 30 10 20 0 255 0\n\n", str);
+            + "motion R 1 50 50 5 10 0 255 0 0 5 60 30 10 20 0 255 0 0\n\n", str);
   }
 
   @Test
@@ -117,7 +117,7 @@ public class AnimatorTest {
             5, 60, 30, 10 ,20, 255, 0, 0, 0);
     String str = am.getVerboseAnimation();
     assertEquals("shape R rectangle\n"
-            + "motion R 1 50 50 5 10 0 255 0 5 60 30 10 20 255 0 0\n\n", str);
+            + "motion R 1 50 50 5 10 0 255 0 0 5 60 30 10 20 255 0 0 0\n\n", str);
   }
 
   @Test(expected = IllegalArgumentException.class)

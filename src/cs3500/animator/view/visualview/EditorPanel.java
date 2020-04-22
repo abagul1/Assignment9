@@ -39,7 +39,6 @@ public class EditorPanel extends JPanel {
   public EditorPanel(IAnimation m) {
     super();
     this.rom = m;
-    this.setPreferredSize(this.getPreferredSize());
   }
 
 

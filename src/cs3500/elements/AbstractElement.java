@@ -2,7 +2,6 @@ package cs3500.elements;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.geom.AffineTransform;
 
 import cs3500.IElement;
 

@@ -63,7 +63,8 @@ public class AnimationModel implements IAnimation {
     }
 
     this.setKeyframes(name, t2, x2, y2, w2, h2, r2, g2, b2, a2);
-    this.addVerboseMotion(name, t1, x1, y1, w1, h1, r1, g1, b1, t2, x2, y2, w2, h2, r2, g2, b2);
+    this.addVerboseMotion(name, t1, x1, y1, w1, h1, r1, g1, b1, a1, t2, x2, y2, w2, h2, r2, g2,
+            b2, a2);
   }
 
   /**
@@ -114,7 +115,9 @@ public class AnimationModel implements IAnimation {
    */
   private void addVerboseMotion(String id,
                                 int t1, int x1, int y1, int w1, int h1, int r1, int g1, int b1,
-                                int t2, int x2, int y2, int w2, int h2, int r2, int g2, int b2) {
+                                int a1,
+                                int t2, int x2, int y2, int w2, int h2, int r2, int g2, int b2,
+                                int a2) {
     if (verboseOps == null) {
       throw new IllegalStateException("Error: Verbose Ops is null");
     }
@@ -129,6 +132,7 @@ public class AnimationModel implements IAnimation {
             .append(" ").append(r1)
             .append(" ").append(g1)
             .append(" ").append(b1)
+            .append(" ").append(a1)
             .append(" ").append(t2)
             .append(" ").append(x2)
             .append(" ").append(y2)
@@ -136,7 +140,8 @@ public class AnimationModel implements IAnimation {
             .append(" ").append(h2)
             .append(" ").append(r2)
             .append(" ").append(g2)
-            .append(" ").append(b2);
+            .append(" ").append(b2)
+            .append(" ").append(a2);
 
     if (!verboseOps.containsKey(id)) {
       throw new IllegalStateException("Element can't be moved before it exists");
@@ -415,9 +420,10 @@ public class AnimationModel implements IAnimation {
       keyframes.get(name).add(m);
       addVerboseMotion(name, m.getParams()[0], m.getParams()[1],
               m.getParams()[2],  m.getParams()[3], m.getParams()[4], m.getParams()[5],
-              m.getParams()[6], m.getParams()[7], m.getParams()[0], m.getParams()[1],
+              m.getParams()[6], m.getParams()[7], m.getParams()[8], m.getParams()[0],
+              m.getParams()[1],
               m.getParams()[2],  m.getParams()[3], m.getParams()[4], m.getParams()[5],
-              m.getParams()[6], m.getParams()[7]);
+              m.getParams()[6], m.getParams()[7], m.getParams()[8]);
       return;
     }
     for (int i = 0; i < keyframes.get(name).size(); i++) {
@@ -425,13 +431,15 @@ public class AnimationModel implements IAnimation {
         m.setPrevMotion(keyframes.get(name).get(keyframes.get(name).size() - 1));
         keyframes.get(name).get(keyframes.get(name).size() - 1).setNextMotion(m);
         keyframes.get(name).add(m);
-        addVerboseMotion(name, m.getParams()[0], m.getParams()[1],
-                  m.getParams()[2],  m.getParams()[3], m.getParams()[4], m.getParams()[5],
-                  m.getParams()[6], m.getParams()[7], m.getPrevMotion().getParams()[0],
-                  m.getPrevMotion().getParams()[1], m.getPrevMotion().getParams()[2],
-                  m.getPrevMotion().getParams()[3], m.getPrevMotion().getParams()[4],
-                  m.getPrevMotion().getParams()[5], m.getPrevMotion().getParams()[6],
-                  m.getPrevMotion().getParams()[7]);
+        addVerboseMotion(name, m.getPrevMotion().getParams()[0],
+                m.getPrevMotion().getParams()[1], m.getPrevMotion().getParams()[2],
+                m.getPrevMotion().getParams()[3], m.getPrevMotion().getParams()[4],
+                m.getPrevMotion().getParams()[5], m.getPrevMotion().getParams()[6],
+                m.getPrevMotion().getParams()[7], m.getPrevMotion().getParams()[8],
+                m.getParams()[0], m.getParams()[1],
+                m.getParams()[2],  m.getParams()[3], m.getParams()[4], m.getParams()[5],
+                m.getParams()[6], m.getParams()[7],
+                m.getParams()[8]);
         break;
       }
       else if (keyframes.get(name).get(i).getParams()[0] > tick) {
@@ -441,9 +449,10 @@ public class AnimationModel implements IAnimation {
           keyframes.get(name).add(i, m);
           addVerboseMotion(name, m.getParams()[0], m.getParams()[1],
                   m.getParams()[2],  m.getParams()[3], m.getParams()[4], m.getParams()[5],
-                  m.getParams()[6], m.getParams()[7], m.getParams()[0], m.getParams()[1],
+                  m.getParams()[6], m.getParams()[7], m.getParams()[8], m.getParams()[0],
+                  m.getParams()[1],
                   m.getParams()[2],  m.getParams()[3], m.getParams()[4], m.getParams()[5],
-                  m.getParams()[6], m.getParams()[7]);
+                  m.getParams()[6], m.getParams()[7], m.getParams()[8]);
           break;
         }
         else {
@@ -452,13 +461,15 @@ public class AnimationModel implements IAnimation {
           m.setPrevMotion( keyframes.get(name).get(i - 1));
           m.setNextMotion(keyframes.get(name).get(i));
           keyframes.get(name).add(i, m);
-          addVerboseMotion(name, m.getParams()[0], m.getParams()[1],
-                  m.getParams()[2],  m.getParams()[3], m.getParams()[4], m.getParams()[5],
-                  m.getParams()[6], m.getParams()[7], m.getPrevMotion().getParams()[0],
+          addVerboseMotion(name, m.getPrevMotion().getParams()[0],
                   m.getPrevMotion().getParams()[1], m.getPrevMotion().getParams()[2],
                   m.getPrevMotion().getParams()[3], m.getPrevMotion().getParams()[4],
                   m.getPrevMotion().getParams()[5], m.getPrevMotion().getParams()[6],
-                  m.getPrevMotion().getParams()[7]);
+                  m.getPrevMotion().getParams()[7], m.getPrevMotion().getParams()[8],
+                  m.getParams()[0], m.getParams()[1],
+                  m.getParams()[2],  m.getParams()[3], m.getParams()[4], m.getParams()[5],
+                  m.getParams()[6], m.getParams()[7],
+                  m.getParams()[8]);
         }
         break;
       }
@@ -505,7 +516,7 @@ public class AnimationModel implements IAnimation {
     while (it.hasNext()) {
       String str = it.next();
       int[] motions = motionParser(str);
-      if (motions[8] == tick) {
+      if (motions[9] == tick) {
         it.remove();
       }
     }
@@ -517,7 +528,7 @@ public class AnimationModel implements IAnimation {
    * @return an array of shape variables
    */
   private int[] motionParser(String s) {
-    int[] arr = new int[16];
+    int[] arr = new int[18];
     String str = s.substring(8);
     Scanner scan = new Scanner(str);
     int i = 0;
@@ -536,13 +547,15 @@ public class AnimationModel implements IAnimation {
         m.setNextMotion(motions.getNextMotion());
         m.setPrevMotion(motions.getPrevMotion());
         keyframes.get(name).set(keyframes.get(name).indexOf(motions), m);
-        addVerboseMotion(name, m.getParams()[0], m.getParams()[1],
-                m.getParams()[2],  m.getParams()[3], m.getParams()[4], m.getParams()[5],
-                m.getParams()[6], m.getParams()[7], m.getPrevMotion().getParams()[0],
+        addVerboseMotion(name, m.getPrevMotion().getParams()[0],
                 m.getPrevMotion().getParams()[1], m.getPrevMotion().getParams()[2],
                 m.getPrevMotion().getParams()[3], m.getPrevMotion().getParams()[4],
                 m.getPrevMotion().getParams()[5], m.getPrevMotion().getParams()[6],
-                m.getPrevMotion().getParams()[7]);
+                m.getPrevMotion().getParams()[7], m.getPrevMotion().getParams()[8],
+                m.getParams()[0], m.getParams()[1],
+                m.getParams()[2],  m.getParams()[3], m.getParams()[4], m.getParams()[5],
+                m.getParams()[6], m.getParams()[7],
+                m.getParams()[8]);
         verboseOps.get(name).set(keyframes.get(name).indexOf(motions) + 1,
                 verboseOps.get(name).get(verboseOps.get(name).size() - 1));
         verboseOps.get(name).remove(verboseOps.get(name).size() - 1);

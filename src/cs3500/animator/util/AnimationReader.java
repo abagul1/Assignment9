@@ -99,18 +99,27 @@ public class AnimationReader {
     } else {
       throw new IllegalStateException("Motion: Expected a shape name, but no more input available");
     }
+    int j = 15;
     for (int i = 0; i < 18; i++) {
-      if (i == 8 || 17) {
-        vals[i] = 0;
+      if (i > 15 && s.hasNextInt()) {
+        vals[i] = getInt(s, "Motion", fieldNames[i]);
+        j = i;
       }
-      else {
+      if (i < 16) {
         vals[i] = getInt(s, "Motion", fieldNames[i]);
       }
     }
-    builder.addMotion(name,
-            vals[0], vals[1], vals[2 ], vals[3 ], vals[4 ], vals[5 ], vals[6 ], vals[7 ], vals[8 ],
-            vals[9], vals[10], vals[11], vals[12], vals[13], vals[14], vals[15], vals[16],
-            vals[17]);
+    if (j == 15) {
+      builder.addMotion(name,
+              vals[0], vals[1], vals[2 ], vals[3 ], vals[4 ], vals[5 ], vals[6 ], vals[7 ], 0,
+              vals[8], vals[9], vals[10], vals[11], vals[12], vals[13], vals[14], vals[15],0);
+    }
+    else if (j == 17) {
+      builder.addMotion(name,
+              vals[0], vals[1], vals[2 ], vals[3 ], vals[4 ], vals[5 ], vals[6 ], vals[7 ], vals[8],
+              vals[9], vals[10], vals[11], vals[12], vals[13], vals[14], vals[15], vals[16],
+              vals[17]);
+    }
   }
   
   private static int getInt(Scanner s, String label, String fieldName) {

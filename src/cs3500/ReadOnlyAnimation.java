@@ -86,7 +86,7 @@ public interface ReadOnlyAnimation {
   int getMaxTick();
 
   /**
-   * Executes the given tick in the animation
+   * Executes the given tick in the animation.
    * @param tick to execute
    */
   void executeTick(int tick);

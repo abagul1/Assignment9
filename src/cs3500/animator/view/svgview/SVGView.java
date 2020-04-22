@@ -45,50 +45,64 @@ public class SVGView extends AbstractTextView {
         case "rectangle":
           str.append("<animate attributeName=\"x\" attributeType=\"XML\"\n"
                   + "             begin=\"" + arr[0] * (1000 / speed) + "ms\" dur=\""
-                  + (arr[8] - arr[0]) * (1000 / speed)
-                  + "ms\" fill=\"freeze\" from=\"" + arr[1] + "\" to=\"" + arr[9] + "\" />\n");
+                  + (arr[9] - arr[0]) * (1000 / speed)
+                  + "ms\" fill=\"freeze\" from=\"" + arr[1] + "\" to=\"" + arr[10] + "\" />\n");
           str.append("<animate attributeName=\"y\" attributeType=\"XML\"\n"
                   + "             begin=\"" + arr[0] * (1000 / speed) + "ms\" dur=\""
-                  + (arr[8] - arr[0]) * (1000 / speed)
-                  + "ms\" fill=\"freeze\" from=\"" + arr[2] + "\" to=\"" + arr[10] + "\" />\n");
+                  + (arr[9] - arr[0]) * (1000 / speed)
+                  + "ms\" fill=\"freeze\" from=\"" + arr[2] + "\" to=\"" + arr[11] + "\" />\n");
           str.append("<animate attributeName=\"width\" attributeType=\"XML\"\n"
                   + "             begin=\"" + arr[0] * (1000 / speed) + "ms\" dur=\""
-                  + (arr[8] - arr[0]) * (1000 / speed)
-                  + "ms\" fill=\"freeze\" from=\"" + arr[3] + "\" to=\"" + arr[11] + "\" />\n");
+                  + (arr[9] - arr[0]) * (1000 / speed)
+                  + "ms\" fill=\"freeze\" from=\"" + arr[3] + "\" to=\"" + arr[12] + "\" />\n");
           str.append("<animate attributeName=\"height\" attributeType=\"XML\"\n"
                   + "             begin=\"" + arr[0] * (1000 / speed) + "ms\" dur=\""
-                  + (arr[8] - arr[0]) * (1000 / speed)
-                  + "ms\" fill=\"freeze\" from=\"" + arr[4] + "\" to=\"" + arr[12] + "\" />\n");
+                  + (arr[9] - arr[0]) * (1000 / speed)
+                  + "ms\" fill=\"freeze\" from=\"" + arr[4] + "\" to=\"" + arr[13] + "\" />\n");
           str.append("<animate attributeName=\"fill\" attributeType=\"CSS\"\n"
                   + "           from=\"rgb(" + arr[5] + "," + arr[6] + "," + arr[7]
-                  + ")\" to=\"rgb(" + arr[13] + "," + arr[14] + "," + arr[15] + ")\"\n"
+                  + ")\" to=\"rgb(" + arr[14] + "," + arr[15] + "," + arr[16] + ")\"\n"
                   + "           begin=\"" + arr[0] * (1000 / speed) + "ms\" dur=\""
-                  + (arr[8] - arr[0]) * (1000 / speed)
+                  + (arr[9] - arr[0]) * (1000 / speed)
                   + "ms\" fill=\"freeze\" />\n");
+          str.append("<animateTransform attributeName=\"transform\" attributeType=\"XML\"\n"
+                  + "type=\"rotate\"\n"
+                  + "from=\"" + arr[8] + " " + (arr[1] + arr[3] / 2) + " " + (arr[2] + arr[4] / 2)
+                  + "\"\n"
+                  + "to=\"" + arr[17] + " " +  (arr[10] + arr[12] / 2) + " "
+                  + (arr[11] + arr[13] / 2) + "\"\n"
+                  + "dur=\"" + (arr[9] - arr[0]) * (1000 / speed) + "ms\"\n/>");
           break;
         case "ellipse":
           str.append("<animate attributeName=\"cx\" attributeType=\"XML\"\n"
                   + "             begin=\"" + arr[0] * (1000 / speed) + "ms\" dur=\""
-                  + (arr[8] - arr[0]) * (1000 / speed)
-                  + "ms\" fill=\"freeze\" from=\"" + arr[1] + "\" to=\"" + arr[9] + "\" />\n");
+                  + (arr[9] - arr[0]) * (1000 / speed)
+                  + "ms\" fill=\"freeze\" from=\"" + arr[1] + "\" to=\"" + arr[10] + "\" />\n");
           str.append("<animate attributeName=\"cy\" attributeType=\"XML\"\n"
                   + "             begin=\"" + arr[0] * (1000 / speed) + "ms\" dur=\""
-                  + (arr[8] - arr[0]) * (1000 / speed)
-                  + "ms\" fill=\"freeze\" from=\"" + arr[2] + "\" to=\"" + arr[10] + "\" />\n");
+                  + (arr[9] - arr[0]) * (1000 / speed)
+                  + "ms\" fill=\"freeze\" from=\"" + arr[2] + "\" to=\"" + arr[11] + "\" />\n");
           str.append("<animate attributeName=\"rx\" attributeType=\"XML\"\n"
                   + "             begin=\"" + arr[0] * (1000 / speed) + "ms\" dur=\""
-                  + (arr[8] - arr[0]) * (1000 / speed)
-                  + "ms\" fill=\"freeze\" from=\"" + arr[3] + "\" to=\"" + arr[11] + "\" />\n");
+                  + (arr[9] - arr[0]) * (1000 / speed)
+                  + "ms\" fill=\"freeze\" from=\"" + arr[3] + "\" to=\"" + arr[12] + "\" />\n");
           str.append("<animate attributeName=\"ry\" attributeType=\"XML\"\n"
                   + "             begin=\"" + arr[0] * (1000 / speed) + "ms\" dur=\""
-                  + (arr[8] - arr[0]) * (1000 / speed)
-                  + "ms\" fill=\"freeze\" from=\"" + arr[4] + "\" to=\"" + arr[12] + "\" />\n");
+                  + (arr[9] - arr[0]) * (1000 / speed)
+                  + "ms\" fill=\"freeze\" from=\"" + arr[4] + "\" to=\"" + arr[13] + "\" />\n");
           str.append("<animate attributeName=\"fill\" attributeType=\"CSS\"\n"
                   + "           from=\"rgb(" + arr[5] + "," + arr[6] + "," + arr[7]
-                  + ")\" to=\"rgb(" + arr[13] + "," + arr[14] + "," + arr[15] + ")\"\n"
+                  + ")\" to=\"rgb(" + arr[14] + "," + arr[15] + "," + arr[16] + ")\"\n"
                   + "           begin=\"" + arr[0] * (1000 / speed) + "ms\" dur=\""
-                  + (arr[8] - arr[0]) * (1000 / speed)
+                  + (arr[9] - arr[0]) * (1000 / speed)
                   + "ms\" fill=\"freeze\" />\n");
+          str.append("<animateTransform attributeName=\"transform\" attributeType=\"XML\"\n"
+                  + "type=\"rotate\"\n"
+                  + "from=\"" + arr[8] + " " + (arr[1] + arr[3] / 2) + " " + (arr[2] + arr[4] / 2)
+                  + "\"\n"
+                  + "to=\"" + arr[17] + " " +  (arr[10] + arr[12] / 2) + " "
+                  + (arr[11] + arr[13] / 2) + "\"\n"
+                  + "dur=\"" + (arr[9] - arr[0]) * (1000 / speed) + "ms\"\n/>");
           break;
         default:
           throw new IllegalArgumentException("Shape doesn't exist");
@@ -144,11 +158,10 @@ public class SVGView extends AbstractTextView {
    * @return an array of shape variables
    */
   private int[] motionParser(String s) {
-    int[] arr = new int[16];
+    int[] arr = new int[18];
     String str = s.substring(8);
     Scanner scan = new Scanner(str);
     int i = 0;
-    scan.next();
     while (scan.hasNextInt()) {
       arr[i] = scan.nextInt();
       i++;
