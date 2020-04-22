@@ -179,6 +179,10 @@ public class EnhancedVisualView extends JFrame implements IView {
     addScrub(listener);
   }
 
+  /**
+   * Add a scrub mechanism to the view.
+   * @param listener controller
+   */
   private void addScrub(IController listener) {
     animationScrub.addChangeListener(e -> listener.executeTick(animationScrub.getValue()));
   }
