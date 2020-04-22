@@ -547,15 +547,27 @@ public class AnimationModel implements IAnimation {
         m.setNextMotion(motions.getNextMotion());
         m.setPrevMotion(motions.getPrevMotion());
         keyframes.get(name).set(keyframes.get(name).indexOf(motions), m);
-        addVerboseMotion(name, m.getPrevMotion().getParams()[0],
-                m.getPrevMotion().getParams()[1], m.getPrevMotion().getParams()[2],
-                m.getPrevMotion().getParams()[3], m.getPrevMotion().getParams()[4],
-                m.getPrevMotion().getParams()[5], m.getPrevMotion().getParams()[6],
-                m.getPrevMotion().getParams()[7], m.getPrevMotion().getParams()[8],
-                m.getParams()[0], m.getParams()[1],
-                m.getParams()[2],  m.getParams()[3], m.getParams()[4], m.getParams()[5],
-                m.getParams()[6], m.getParams()[7],
-                m.getParams()[8]);
+        if (m.getPrevMotion() == null) {
+          addVerboseMotion(name, m.getParams()[0], m.getParams()[1],
+                  m.getParams()[2], m.getParams()[3], m.getParams()[4], m.getParams()[5],
+                  m.getParams()[6], m.getParams()[7],
+                  m.getParams()[8],
+                  m.getParams()[0], m.getParams()[1],
+                  m.getParams()[2],  m.getParams()[3], m.getParams()[4], m.getParams()[5],
+                  m.getParams()[6], m.getParams()[7],
+                  m.getParams()[8]);
+        }
+        else {
+          addVerboseMotion(name, m.getPrevMotion().getParams()[0],
+                  m.getPrevMotion().getParams()[1], m.getPrevMotion().getParams()[2],
+                  m.getPrevMotion().getParams()[3], m.getPrevMotion().getParams()[4],
+                  m.getPrevMotion().getParams()[5], m.getPrevMotion().getParams()[6],
+                  m.getPrevMotion().getParams()[7], m.getPrevMotion().getParams()[8],
+                  m.getParams()[0], m.getParams()[1],
+                  m.getParams()[2],  m.getParams()[3], m.getParams()[4], m.getParams()[5],
+                  m.getParams()[6], m.getParams()[7],
+                  m.getParams()[8]);
+        }
         verboseOps.get(name).set(keyframes.get(name).indexOf(motions) + 1,
                 verboseOps.get(name).get(verboseOps.get(name).size() - 1));
         verboseOps.get(name).remove(verboseOps.get(name).size() - 1);

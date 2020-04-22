@@ -421,6 +421,14 @@ public class EditorPanel extends JPanel {
     bPanel.add(blueLabel, BorderLayout.WEST);
     fieldPanel.add(bPanel);
 
+    JPanel aPanel = new JPanel(new BorderLayout());
+    JTextField angle = new JTextField();
+    angle.setColumns(4);
+    JLabel angleLabel = new JLabel("A:");
+    aPanel.add(angle, BorderLayout.CENTER);
+    aPanel.add(angleLabel, BorderLayout.WEST);
+    fieldPanel.add(aPanel);
+
     JButton insert = new JButton("Insert KeyFrame");
     JPanel buttonPanel = new JPanel();
     buttonPanel.add(insert);
@@ -433,7 +441,8 @@ public class EditorPanel extends JPanel {
                   Integer.parseInt(xPos.getText()), Integer.parseInt(yPos.getText()),
                   Integer.parseInt(width.getText()), Integer.parseInt(height.getText()),
                   Integer.parseInt(red.getText()),
-                  Integer.parseInt(green.getText()), Integer.parseInt(blue.getText()), 0);
+                  Integer.parseInt(green.getText()), Integer.parseInt(blue.getText()),
+                  Integer.parseInt(angle.getText()));
           rom.insertKeyFrame(selectedShape, Integer.parseInt(tick.getText()), m);
           finalScreen("Keyframe is inserted, click start to go back to the animation,"
                   + "or edit to continue editing.");
@@ -543,6 +552,15 @@ public class EditorPanel extends JPanel {
     bPanel.add(blueLabel, BorderLayout.WEST);
     fieldPanel.add(bPanel);
 
+    JPanel aPanel = new JPanel(new BorderLayout());
+    JTextField angle = new JTextField();
+    angle.setText(Integer.toString(motionToEdit.getParams()[8]));
+    angle.setColumns(4);
+    JLabel angleLabel = new JLabel("A:");
+    aPanel.add(angle, BorderLayout.CENTER);
+    aPanel.add(angleLabel, BorderLayout.WEST);
+    fieldPanel.add(aPanel);
+
     JButton edit = new JButton("Submit Edits");
     JPanel buttonPanel = new JPanel();
     buttonPanel.add(edit);
@@ -555,7 +573,8 @@ public class EditorPanel extends JPanel {
                   Integer.parseInt(xPos.getText()), Integer.parseInt(yPos.getText()),
                   Integer.parseInt(width.getText()), Integer.parseInt(height.getText()),
                   Integer.parseInt(red.getText()),
-                  Integer.parseInt(green.getText()), Integer.parseInt(blue.getText()), 0);
+                  Integer.parseInt(green.getText()), Integer.parseInt(blue.getText()),
+                  Integer.parseInt(angle.getText()));
           rom.editKeyFrame(selectedShape, Integer.parseInt(tick.getText()), m);
           finalScreen("Keyframe is edited, click start to go back to the animation,"
                   + "or edit to continue editing.");
