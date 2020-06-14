@@ -40,15 +40,22 @@ Assignment 7 Key Notes:
     panel manages the display of the animation, as well as the mouse handling and button management
     of the user.
 
+Extra Credit Functionality:
+
+    The animation player allows the user the ability to save edited files to their computer from
+    the editor, either in text format or svg format.
+
+    A scrubbing bar was implemented so users can scrub back and forth through the animation and
+    watch it visually change as they scrub in the player.
+
+    The animator has added support for rotations.
+
 Operational Notes:
 
     The way our model is structured, each tick represents a frame, so the speed is both the
     frame rate and the speed of execution. For optimal animation rendering use speeds above 10.
 
     ***Important***
-    Sometimes the panel backgrounds do not overlay properly. I.e. the edit panel might show up over
-    the animation panel, where you can still see the animation in the background underneath,
-    this is just a graphical problem, however. Everything still operates and works as expected.
 
     Please select a shape from the scroll panel to delete or edit a key frame.
 
